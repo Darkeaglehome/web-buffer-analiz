@@ -8,6 +8,8 @@
 
 **English** | [Türkçe](#türkçe)
 
+https://web-buffer-analiz.pages.dev/ linki
+
 ---
 
 ## English
