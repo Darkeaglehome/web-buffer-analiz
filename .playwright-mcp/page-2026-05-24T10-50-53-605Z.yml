@@ -1,0 +1,1117 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - img
+  - generic:
+    - banner:
+      - generic:
+        - link "Cloudflare logo" [ref=e2] [cursor=pointer]:
+          - /url: /
+          - img [ref=e3]
+          - img "Cloudflare wordmark" [ref=e11]
+        - navigation "Main navigation" [ref=e24]:
+          - generic [ref=e26]:
+            - link "Products" [ref=e28] [cursor=pointer]:
+              - /url: /products/
+              - text: Products
+              - img [ref=e29]
+            - link "Solutions" [ref=e31] [cursor=pointer]:
+              - /url: /solutions/
+              - text: Solutions
+              - img [ref=e32]
+            - link "Resources" [ref=e34] [cursor=pointer]:
+              - /url: /resource-hub/
+              - text: Resources
+              - img [ref=e35]
+            - link "Pricing" [ref=e37] [cursor=pointer]:
+              - /url: /plans/
+        - generic:
+          - generic:
+            - generic:
+              - link "Under attack?" [ref=e38] [cursor=pointer]:
+                - /url: /under-attack-hotline/
+                - img [ref=e40]
+                - generic [ref=e42]: Under attack?
+              - link "Login" [ref=e43] [cursor=pointer]:
+                - /url: https://dash.cloudflare.com/login
+              - link "Contact sales" [ref=e44] [cursor=pointer]:
+                - /url: /resource/contact-enterprise-sales/
+          - generic:
+            - link:
+              - /url: https://dash.cloudflare.com/sign-up
+              - text: Start building
+  - main [ref=e45]:
+    - generic [ref=e46]:
+      - generic [ref=e48]:
+        - img [ref=e49]
+        - img [ref=e50]
+        - generic [ref=e54]:
+          - generic [ref=e55]: Agents Week is happening now April 13 - April 17! Check out the announcements here
+          - generic [ref=e56]:
+            - heading "Everything we learned from powering 20% of the Internet—yours by default" [level=1] [ref=e57]
+            - paragraph [ref=e59]: One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure.
+            - link "Start building for free" [ref=e60] [cursor=pointer]:
+              - /url: https://dash.cloudflare.com/sign-up
+              - generic [ref=e61]: Start building for free
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - 'heading "Region: Earth" [level=2] [ref=e65]'
+          - paragraph [ref=e66]: One smart network for workloads + security — close to users, close to data.
+        - generic [ref=e74]:
+          - generic [ref=e76]:
+            - img [ref=e78]
+            - heading "Run everywhere" [level=3] [ref=e80]
+            - paragraph [ref=e81]: Security, connectivity, and code run in 335+ cities around the world, within 50ms of 95% of the world's population.
+          - generic [ref=e83]:
+            - img [ref=e85]
+            - heading "Run anywhere" [level=3] [ref=e87]
+            - paragraph [ref=e88]: Our network is close to your users, applications, and sites. It optimizes all your traffic from source to destination for low latency.
+          - generic [ref=e90]:
+            - img [ref=e92]
+            - heading "Run at massive scale" [level=3] [ref=e94]
+            - paragraph [ref=e95]: No more capacity planning. Ever.
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - heading "Cloudflare powers 42% of the Fortune 500" [level=2] [ref=e99]
+          - paragraph [ref=e100]: Trusted by the teams you trust.
+        - generic [ref=e101]:
+          - region "Customer stories" [ref=e104]:
+            - generic [ref=e105]:
+              - navigation "Choose a customer story" [ref=e112]:
+                - generic [ref=e113]:
+                  - button "Currently showing the Shopify customer story" [ref=e114] [cursor=pointer]:
+                    - generic [ref=e115]:
+                      - img [ref=e117]
+                      - generic [ref=e121]: Shopify
+                  - button "Show the Character.AI customer story" [ref=e122] [cursor=pointer]:
+                    - generic [ref=e123]:
+                      - img [ref=e125]
+                      - generic [ref=e127]: Character.AI
+                  - button "Show the Intercom customer story" [ref=e128] [cursor=pointer]:
+                    - generic [ref=e129]:
+                      - img [ref=e131]
+                      - generic [ref=e133]: Intercom
+                  - button "Show the DoorDash customer story" [ref=e134] [cursor=pointer]:
+                    - generic [ref=e135]:
+                      - img [ref=e137]
+                      - generic [ref=e139]: DoorDash
+                  - button "Show the Discord customer story" [ref=e140] [cursor=pointer]:
+                    - generic [ref=e141]:
+                      - img [ref=e143]
+                      - generic [ref=e145]: Discord
+                  - button "Show the Zendesk customer story" [ref=e146] [cursor=pointer]:
+                    - generic [ref=e147]:
+                      - img [ref=e149]
+                      - generic [ref=e151]: Zendesk
+                  - button "Show the Lovable customer story" [ref=e152] [cursor=pointer]:
+                    - generic [ref=e153]:
+                      - img [ref=e155]
+                      - generic [ref=e165]: Lovable
+                  - button "Show the npm customer story" [ref=e166] [cursor=pointer]:
+                    - generic [ref=e167]:
+                      - img [ref=e169]
+                      - generic [ref=e174]: npm
+                  - button "Show the SiteGPT customer story" [ref=e175] [cursor=pointer]:
+                    - generic [ref=e176]:
+                      - img [ref=e178]
+                      - generic [ref=e182]: SiteGPT
+                  - button "Show the Liveblocks customer story" [ref=e183] [cursor=pointer]:
+                    - generic [ref=e184]:
+                      - img [ref=e186]
+                      - generic [ref=e189]: Liveblocks
+                  - button "Show the Leagued customer story" [ref=e190] [cursor=pointer]:
+                    - generic [ref=e191]:
+                      - img [ref=e193]
+                      - generic [ref=e206]: Leagued
+                  - button "Show the Seated customer story" [ref=e207] [cursor=pointer]:
+                    - generic [ref=e208]:
+                      - img [ref=e210]
+                      - generic [ref=e212]: Seated
+                  - button "Show the Shopify customer story" [ref=e213] [cursor=pointer]:
+                    - generic [ref=e214]:
+                      - img [ref=e216]
+                      - generic [ref=e220]: Shopify
+                  - button "Show the Character.AI customer story" [ref=e221] [cursor=pointer]:
+                    - generic [ref=e222]:
+                      - img [ref=e224]
+                      - generic [ref=e226]: Character.AI
+                  - button "Show the Intercom customer story" [ref=e227] [cursor=pointer]:
+                    - generic [ref=e228]:
+                      - img [ref=e230]
+                      - generic [ref=e232]: Intercom
+                  - button "Show the DoorDash customer story" [ref=e233] [cursor=pointer]:
+                    - generic [ref=e234]:
+                      - img [ref=e236]
+                      - generic [ref=e238]: DoorDash
+              - 'region "Story: Shopify" [ref=e239]':
+                - button "Pause customer story and logo rotation" [ref=e240] [cursor=pointer]:
+                  - img
+                  - generic [ref=e241]: Pause
+                - generic [ref=e248]:
+                  - generic [ref=e251]:
+                    - img [ref=e254]
+                    - img "Duncan Davidson" [ref=e258]
+                  - blockquote [ref=e260]:
+                    - heading "For Shopify, the real challenge is not about how many different pieces of complex technology we can use but the opposite. Cloudflare helps us find a simple way to achieve something very complex that we can scale and maintain." [level=3] [ref=e261]:
+                      - generic [ref=e262]: “
+                      - generic [ref=e263]: For Shopify, the real challenge is not about how many different pieces of complex technology we can use but the opposite. Cloudflare helps us find a simple way to achieve something very complex that we can scale and maintain.
+                      - text: ”
+                  - paragraph [ref=e265]:
+                    - strong [ref=e266]: Duncan Davidson
+                    - text: ", VP of Developer Productivity, Shopify"
+          - paragraph [ref=e267]: And thousands more...
+          - generic [ref=e271]:
+            - generic [ref=e272]:
+              - img [ref=e274]
+              - img [ref=e276]
+              - img [ref=e278]
+              - img [ref=e280]
+              - img [ref=e282]
+              - img [ref=e284]
+              - img [ref=e286]
+              - img [ref=e288]
+              - img [ref=e290]
+              - img [ref=e292]
+              - img [ref=e294]
+              - img [ref=e296]
+              - img [ref=e298]
+              - img [ref=e300]
+              - img [ref=e302]
+              - img [ref=e304]
+              - img [ref=e306]
+              - img [ref=e308]
+              - img [ref=e310]
+              - img [ref=e312]
+              - img [ref=e314]
+              - img [ref=e316]
+              - img [ref=e318]
+              - img [ref=e320]
+              - img [ref=e322]
+              - img [ref=e324]
+              - img [ref=e326]
+              - img [ref=e328]
+              - img [ref=e330]
+              - img [ref=e332]
+              - img [ref=e334]
+              - img [ref=e336]
+            - generic [ref=e337]:
+              - img [ref=e339]
+              - img [ref=e341]
+              - img [ref=e343]
+              - img [ref=e345]
+              - img [ref=e347]
+              - img [ref=e349]
+              - img [ref=e351]
+              - img [ref=e353]
+              - img [ref=e355]
+              - img [ref=e357]
+              - img [ref=e359]
+              - img [ref=e361]
+              - img [ref=e363]
+              - img [ref=e365]
+              - img [ref=e367]
+              - img [ref=e369]
+              - img [ref=e371]
+              - img [ref=e373]
+              - img [ref=e375]
+              - img [ref=e377]
+              - img [ref=e379]
+              - img [ref=e381]
+              - img [ref=e383]
+              - img [ref=e385]
+              - img [ref=e387]
+              - img [ref=e389]
+              - img [ref=e391]
+              - img [ref=e393]
+              - img [ref=e395]
+              - img [ref=e397]
+              - img [ref=e399]
+              - img [ref=e401]
+      - generic [ref=e404]:
+        - heading "Why choose Cloudflare" [level=2] [ref=e405]
+        - paragraph [ref=e407]:
+          - text: Everything needed to
+          - generic [ref=e408]:
+            - generic [ref=e409]: build
+            - generic [ref=e411]: secure,
+            - generic [ref=e413]: performant
+            - generic [ref=e415]: applications
+      - generic [ref=e418]:
+        - generic [ref=e419]:
+          - generic:
+            - generic:
+              - img
+              - img
+        - generic [ref=e420]:
+          - heading "Fighting infra with “cloud”" [level=3] [ref=e421]
+          - generic [ref=e423]:
+            - generic [ref=e425]:
+              - img
+              - generic [ref=e428]: "\"Egress costs just doubled this week — caching not working at edge. Can we fix this by EOD?\""
+            - generic [ref=e430]:
+              - img
+              - generic [ref=e432]:
+                - img [ref=e433]
+                - generic [ref=e435]: "STATUS: UNRESOLVED"
+            - generic [ref=e437]:
+              - img
+              - generic [ref=e439]:
+                - img [ref=e440]
+                - generic [ref=e442]: 2931 Open incidents
+            - generic [ref=e444]:
+              - img
+              - generic [ref=e446]:
+                - img [ref=e447]
+                - generic [ref=e449]: 2931 Open incidents
+            - generic [ref=e451]:
+              - img
+              - generic [ref=e453]:
+                - generic [ref=e455]: P0
+                - generic [ref=e456]: High Latency!!!!!!
+                - generic [ref=e457]: ~150–250ms RTT per request
+            - generic [ref=e459]:
+              - img
+              - generic [ref=e461]:
+                - generic [ref=e463]: P0
+                - generic [ref=e464]: High Latency!!!!!!
+                - generic [ref=e465]: ~150–250ms RTT per request
+            - generic [ref=e467]:
+              - img
+              - generic [ref=e469]:
+                - generic [ref=e471]: P0
+                - generic [ref=e472]: High Latency!!!!!!
+                - generic [ref=e473]: ~150–250ms RTT per request
+            - generic [ref=e475]:
+              - img
+              - generic [ref=e477]:
+                - img [ref=e478]
+                - generic [ref=e480]: "\"Origin IP exposed, getting hit with direct DDoS traffic. Need to lock down ASAP.\""
+            - generic [ref=e482]:
+              - img
+              - generic [ref=e484]:
+                - img [ref=e485]
+                - generic [ref=e487]: Bandwidth usage alert
+                - generic [ref=e488]: You have exceeded your bandwidth limit for the month.
+            - generic [ref=e490]:
+              - img
+              - generic [ref=e492]:
+                - img [ref=e493]
+                - generic [ref=e495]: Bandwidth usage alert
+                - generic [ref=e496]: You have exceeded your bandwidth limit for the month.
+            - generic [ref=e498]:
+              - img
+              - generic [ref=e500]:
+                - img [ref=e501]
+                - generic [ref=e503]: Summer Intern
+                - generic [ref=e504]: "\"I fixed the errors by pushing the env file to production.\""
+            - generic [ref=e506]:
+              - img
+              - generic [ref=e509]: "\"Cache hit ratio just tanked to 12%. Origin egress is 14× normal — this month's bill is going to be brutal.\""
+            - generic [ref=e511]:
+              - img
+              - generic [ref=e513]:
+                - img [ref=e514]
+                - generic [ref=e517]: P0
+                - generic [ref=e518]: Credential stuffing detected
+                - generic [ref=e519]: 142K login attempts from 38K IPs in the last 5 minutes.
+            - generic [ref=e521]:
+              - img
+              - generic [ref=e523]:
+                - img [ref=e524]
+                - generic [ref=e527]: P0
+                - generic [ref=e528]: Credential stuffing detected
+                - generic [ref=e529]: 142K login attempts from 38K IPs in the last 5 minutes.
+            - generic [ref=e531]:
+              - img
+              - generic [ref=e533]:
+                - img [ref=e534]
+                - generic [ref=e536]: "\"VPN concentrator pegged at 98% — APAC engineering can't reach staging again.\""
+            - generic [ref=e538]:
+              - img
+              - generic [ref=e540]:
+                - img [ref=e541]
+                - generic [ref=e543]: Sensitive data exfiltration
+                - generic [ref=e544]: 12 customer records pasted into a public AI tool in the last hour.
+            - generic [ref=e546]:
+              - img
+              - generic [ref=e548]:
+                - img [ref=e549]
+                - generic [ref=e551]: Employee clicked phishing link. SSO session may be compromised.
+            - generic [ref=e553]:
+              - img
+              - generic [ref=e555]:
+                - img [ref=e556]
+                - generic [ref=e558]: MPLS circuit down
+                - generic [ref=e559]: "Singapore ↔ Frankfurt. Carrier ETA: 4–6 hours."
+        - generic [ref=e560]:
+          - heading "Shipping with Cloudflare" [level=3] [ref=e713]:
+            - text: Shipping with
+            - text: Cloudflare
+          - generic [ref=e716]:
+            - img [ref=e717]
+            - generic [ref=e719]:
+              - generic [ref=e720]: Pushed
+              - generic [ref=e721]: Onboarded
+            - generic [ref=e726]:
+              - generic [ref=e728]: "7"
+              - generic [ref=e730]: "2"
+            - generic [ref=e731]:
+              - generic [ref=e732]: new updates today
+              - generic [ref=e733]: employees today
+      - generic [ref=e736]:
+        - heading "Pay only when your code runs" [level=2] [ref=e738]:
+          - text: Pay only
+          - generic [ref=e739]:
+            - generic [ref=e740]: when
+            - generic [ref=e742]: your
+            - generic [ref=e744]: code
+            - generic [ref=e746]: runs
+        - paragraph [ref=e747]: (Not to keep servers warm.)
+      - generic [ref=e751]:
+        - tablist "Platform categories" [ref=e758]:
+          - generic [ref=e759]:
+            - tab "Network & CDN tab" [selected] [ref=e760] [cursor=pointer]:
+              - img [ref=e761]
+              - text: Network & CDN
+            - tab "SASE / Zero Trust tab" [ref=e763] [cursor=pointer]:
+              - img [ref=e764]
+              - text: SASE / Zero Trust
+            - tab "Compute & Storage tab" [ref=e766] [cursor=pointer]:
+              - img [ref=e767]
+              - text: Compute & Storage
+            - generic:
+              - generic:
+                - img
+                - text: Network & CDN
+              - generic:
+                - img
+                - text: SASE / Zero Trust
+              - generic:
+                - img
+                - text: Compute & Storage
+        - generic [ref=e771]:
+          - tabpanel "Network & CDN tab" [ref=e772]:
+            - generic [ref=e773]:
+              - generic [ref=e774]:
+                - generic [ref=e775]:
+                  - heading "Pay for clean traffic" [level=3] [ref=e776]
+                  - paragraph [ref=e777]: One stack of security and performance for every site — same DDoS mitigation, same global CDN, same network at every tier. You only pay for the depth your site needs.
+                - generic [ref=e779]:
+                  - generic [ref=e780]:
+                    - generic [ref=e781]: Visitor traffic
+                    - generic [ref=e782]: Your site
+                  - generic [ref=e783]:
+                    - generic [ref=e784]:
+                      - img
+                      - generic [ref=e786]:
+                        - img [ref=e787]
+                        - generic [ref=e789]: CDN
+                    - generic [ref=e791]:
+                      - img
+                      - generic [ref=e793]:
+                        - img [ref=e794]
+                        - generic [ref=e796]: DDoS
+                    - generic [ref=e798]:
+                      - img
+                      - generic [ref=e800]:
+                        - img [ref=e801]
+                        - generic [ref=e803]: SSL
+                    - generic [ref=e805]:
+                      - img
+                      - generic [ref=e807]:
+                        - img [ref=e808]
+                        - generic [ref=e810]: WAF
+                    - generic [ref=e812]:
+                      - img
+                      - generic [ref=e814]:
+                        - img [ref=e815]
+                        - generic [ref=e817]: Bot
+                  - generic [ref=e818]: Same protection at every tier — paid plans add depth
+              - generic [ref=e819]:
+                - generic [ref=e820]:
+                  - paragraph [ref=e821]:
+                    - strong [ref=e822]: Free
+                    - text: for hobby projects
+                  - generic [ref=e824]:
+                    - heading "$0" [level=4] [ref=e825]
+                    - generic [ref=e826]: /month
+                  - generic [ref=e827]:
+                    - generic [ref=e829]: Unmetered DDoS
+                    - generic [ref=e831]: Universal SSL
+                    - generic [ref=e833]: Global CDN
+                  - link "See Free plan" [ref=e834] [cursor=pointer]:
+                    - /url: /plans#application-services
+                - generic [ref=e835]:
+                  - paragraph [ref=e836]:
+                    - strong [ref=e837]: Pro
+                    - text: for pro websites
+                  - generic [ref=e838]:
+                    - generic [ref=e839]:
+                      - heading "$20" [level=4] [ref=e840]
+                      - generic [ref=e841]: /mo billed annually
+                    - generic [ref=e842]: or $25/mo billed monthly
+                  - generic [ref=e843]:
+                    - generic [ref=e845]: Image optimization
+                    - generic [ref=e847]: Bot protection
+                    - generic [ref=e849]: Ticket support
+                  - link "See Pro plan" [ref=e850] [cursor=pointer]:
+                    - /url: /plans#application-services
+                - generic [ref=e851]:
+                  - paragraph [ref=e852]:
+                    - strong [ref=e853]: Business
+                    - text: for small business
+                  - generic [ref=e854]:
+                    - generic [ref=e855]:
+                      - heading "$200" [level=4] [ref=e856]
+                      - generic [ref=e857]: /mo billed annually
+                    - generic [ref=e858]: or $250/mo billed monthly
+                  - generic [ref=e859]:
+                    - generic [ref=e861]: PCI DSS 4.0
+                    - generic [ref=e863]: 100% uptime SLA
+                    - generic [ref=e865]: Chat support
+                  - link "See Business plan" [ref=e866] [cursor=pointer]:
+                    - /url: /plans#application-services
+                - generic [ref=e867]:
+                  - paragraph [ref=e868]:
+                    - strong [ref=e869]: Contract
+                    - text: for mission-critical
+                  - generic [ref=e870]:
+                    - heading "Custom" [level=4] [ref=e872]
+                    - generic [ref=e873]: Billed annually
+                  - generic [ref=e874]:
+                    - generic [ref=e876]: Network priority
+                    - generic [ref=e878]: 24/7 support
+                    - generic [ref=e880]: Custom contracts
+                  - link "See Contract plan" [ref=e881] [cursor=pointer]:
+                    - /url: /plans#application-services
+            - generic [ref=e882]:
+              - img
+          - tabpanel [ref=e883]:
+            - generic [ref=e884]:
+              - generic [ref=e885]:
+                - generic [ref=e886]:
+                  - heading [level=6] [ref=e887]: Pay for active employees
+                  - paragraph [ref=e888]: Connect and secure users, devices, and data on one Zero Trust platform. The first 50 employees are on us — scale to thousands at a flat per-user rate.
+                - generic [ref=e890]:
+                  - heading [level=6] [ref=e892]: 50 users on us
+                  - generic [ref=e944]:
+                    - heading [level=6] [ref=e945]: Then $7 per active user
+                    - generic [ref=e946]: Billed monthly · scales to thousands
+              - generic [ref=e947]:
+                - generic [ref=e948]:
+                  - paragraph [ref=e949]:
+                    - strong [ref=e950]: Free
+                    - text: for teams under 50
+                  - generic [ref=e952]:
+                    - heading [level=4] [ref=e953]: $0
+                    - generic [ref=e954]: forever
+                  - generic [ref=e955]:
+                    - generic [ref=e957]: ZTNA, SWG & DEX
+                    - generic [ref=e959]: 24h log retention
+                    - generic [ref=e961]: Community support
+                  - link [ref=e962] [cursor=pointer]:
+                    - /url: /plans#sase
+                    - text: See Free plan
+                - generic [ref=e963]:
+                  - paragraph [ref=e964]:
+                    - strong [ref=e965]: Pay-as-you-go
+                    - text: scales with headcount
+                  - generic [ref=e967]:
+                    - heading [level=4] [ref=e968]: $7
+                    - generic [ref=e969]: /user/month
+                  - generic [ref=e970]:
+                    - generic [ref=e972]: 100% uptime SLA
+                    - generic [ref=e974]: 30-day logs
+                    - generic [ref=e976]: Chat & ticket support
+                  - link [ref=e977] [cursor=pointer]:
+                    - /url: /plans#sase
+                    - text: See Pay-as-you-go plan
+                - generic [ref=e978]:
+                  - paragraph [ref=e979]:
+                    - strong [ref=e980]: Contract
+                    - text: for full-featured SASE
+                  - generic [ref=e982]:
+                    - heading [level=4] [ref=e983]: Custom
+                    - generic [ref=e984]: Annual price per user
+                  - generic [ref=e985]:
+                    - generic [ref=e987]: Unlimited CASB & DLP
+                    - generic [ref=e989]: Logpush
+                    - generic [ref=e991]: 24/7 phone support
+                  - link [ref=e992] [cursor=pointer]:
+                    - /url: /plans#sase
+                    - text: See Contract plan
+          - tabpanel [ref=e994]:
+            - generic [ref=e995]:
+              - generic [ref=e997]:
+                - generic [ref=e998]:
+                  - heading [level=6] [ref=e999]: Wall Clock vs. CPU Time
+                  - paragraph [ref=e1000]: Never pay for idle time waiting for slow APIs, LLMs, or humans. Cloudflare charges only for compute, not wall time, even during long agent workflows or hibernating WebSockets.
+                - generic [ref=e1001]:
+                  - generic [ref=e1003]:
+                    - generic [ref=e1009]: 1ms
+                    - generic [ref=e1011]:
+                      - generic [ref=e1014]:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                      - generic [ref=e1016]: LLM Call 2500ms
+                    - generic [ref=e1021]: 0.5ms
+                    - generic [ref=e1023]:
+                      - generic [ref=e1026]:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                          - generic:
+                            - generic:
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                              - generic: free
+                      - generic [ref=e1028]: API Call 300ms
+                    - generic [ref=e1033]: 0.75ms
+                  - generic [ref=e1035]:
+                    - code [ref=e1039]: Paid
+                    - code [ref=e1042]: Free
+              - generic [ref=e1044]:
+                - generic [ref=e1045]:
+                  - generic [ref=e1046]:
+                    - generic [ref=e1047]:
+                      - heading [level=4] [ref=e1048]: Free
+                      - paragraph [ref=e1049]: No credit card needed
+                    - link [ref=e1050] [cursor=pointer]:
+                      - /url: /plans#developer-platform
+                      - text: See more
+                  - generic [ref=e1051]:
+                    - tablist [ref=e1053]:
+                      - tab [selected] [ref=e1054] [cursor=pointer]: Workers
+                      - tab [ref=e1055] [cursor=pointer]: Durable Objects
+                      - tab [ref=e1056] [cursor=pointer]: Workers KV
+                    - generic [ref=e1057]:
+                      - tabpanel [ref=e1058]:
+                        - generic [ref=e1060]:
+                          - heading [level=6] [ref=e1061]: 100,000
+                          - paragraph [ref=e1062]: / daily requests
+                        - generic [ref=e1064]:
+                          - heading [level=6] [ref=e1065]: 1 million
+                          - paragraph [ref=e1066]: / KV daily reads
+                        - generic [ref=e1068]:
+                          - heading [level=6] [ref=e1069]: "25"
+                          - paragraph [ref=e1070]: / AI daily requests
+                        - generic [ref=e1072]:
+                          - heading [level=6] [ref=e1073]: 10GB
+                          - paragraph [ref=e1074]: / R2 Storage
+                      - tabpanel [ref=e1075]:
+                        - generic [ref=e1077]:
+                          - heading [level=6] [ref=e1078]: 5 GB
+                          - paragraph [ref=e1079]: / SQL Stored Data
+                        - generic [ref=e1081]:
+                          - heading [level=6] [ref=e1082]: 1 GB
+                          - paragraph [ref=e1083]: / Stored Data (KV)
+                      - tabpanel [ref=e1084]:
+                        - generic [ref=e1086]:
+                          - heading [level=6] [ref=e1087]: 1 GB
+                          - paragraph [ref=e1088]: / Stored Data
+                        - generic [ref=e1090]:
+                          - heading [level=6] [ref=e1091]: 100,000
+                          - paragraph [ref=e1092]: / Read requests
+                        - generic [ref=e1094]:
+                          - heading [level=6] [ref=e1095]: 1,000
+                          - paragraph [ref=e1096]: / Write/Delete/List requests
+                - generic [ref=e1097]:
+                  - generic [ref=e1098]:
+                    - generic [ref=e1099]:
+                      - heading [level=4] [ref=e1100]: Paid
+                      - paragraph [ref=e1101]: Starts at $5/month
+                    - link [ref=e1102] [cursor=pointer]:
+                      - /url: /plans#developer-platform
+                      - text: See more
+                  - generic [ref=e1103]:
+                    - tablist [ref=e1105]:
+                      - tab [selected] [ref=e1106] [cursor=pointer]: Workers
+                      - tab [ref=e1107] [cursor=pointer]: Durable Objects
+                      - tab [ref=e1108] [cursor=pointer]: Workers KV
+                    - generic [ref=e1109]:
+                      - tabpanel [ref=e1110]:
+                        - generic [ref=e1112]:
+                          - heading [level=6] [ref=e1113]: $0.30
+                          - paragraph [ref=e1114]: / million requests
+                        - generic [ref=e1116]:
+                          - heading [level=6] [ref=e1117]: $0.02
+                          - paragraph [ref=e1118]: / million CPU ms
+                      - tabpanel [ref=e1119]:
+                        - generic [ref=e1121]:
+                          - heading [level=6] [ref=e1122]: $0.15
+                          - paragraph [ref=e1123]: / million
+                        - generic [ref=e1125]:
+                          - heading [level=6] [ref=e1126]: $12.50
+                          - paragraph [ref=e1127]: / million GB-s
+                        - generic [ref=e1129]:
+                          - heading [level=6] [ref=e1130]: $0.001
+                          - paragraph [ref=e1131]: / million Read rows
+                        - generic [ref=e1133]:
+                          - heading [level=6] [ref=e1134]: $1.00
+                          - paragraph [ref=e1135]: / million Written rows
+                      - tabpanel [ref=e1136]:
+                        - generic [ref=e1138]:
+                          - heading [level=6] [ref=e1139]: $0.50
+                          - paragraph [ref=e1140]: / GB-month
+                        - generic [ref=e1142]:
+                          - heading [level=6] [ref=e1143]: $0.50
+                          - paragraph [ref=e1144]: / million Read requests
+                        - generic [ref=e1146]:
+                          - heading [level=6] [ref=e1147]: $5.00
+                          - paragraph [ref=e1148]: / million Write/Delete/List requests
+      - generic [ref=e1151]:
+        - heading "Tailored to your team" [level=3] [ref=e1152]
+        - paragraph [ref=e1153]: Easy to use for both startups and the world’s largest enterprises.
+      - generic [ref=e1156]:
+        - generic [ref=e1158]:
+          - generic [ref=e1161]:
+            - img [ref=e1162]
+            - img [ref=e1170]
+          - generic [ref=e1173]:
+            - heading "Fits into your existing workflows" [level=3] [ref=e1174]
+            - paragraph [ref=e1175]: Git, GitHub Actions, VS Code, and any framework. No proprietary tools or vendor lock-in.
+        - generic [ref=e1177]:
+          - img [ref=e1178]
+          - heading "One network for users, apps, and data" [level=3] [ref=e1180]
+          - paragraph [ref=e1181]: Whether you're shipping code, securing employees, or connecting branches, it all runs on the same global network — managed from one dashboard, billed as one platform.
+        - generic [ref=e1183]:
+          - img [ref=e1184]
+          - heading "Secure by default" [level=3] [ref=e1186]
+          - paragraph [ref=e1187]: DDoS protection, WAF, bot management, and Zero Trust controls are built into the network and run on every request from day one.
+        - generic [ref=e1189]:
+          - generic [ref=e1190]:
+            - heading "Fast path to AI adoption" [level=3] [ref=e1191]
+            - paragraph [ref=e1192]: Build, deploy, and govern AI agents on the same network. Secure MCP portals, identity-aware access, and built-in inference make production AI a one-step deploy.
+          - generic [ref=e1194]:
+            - generic [ref=e1197]:
+              - generic [ref=e1198]: Launching agents to analyze repository…
+              - generic [ref=e1199]:
+                - generic [ref=e1202]: 3 background agents launched
+                - generic [ref=e1203]:
+                  - generic [ref=e1205]:
+                    - generic [ref=e1206]:
+                      - img [ref=e1207]
+                      - generic [ref=e1210]: review-agent
+                    - generic [ref=e1211]:
+                      - img [ref=e1212]
+                      - generic [ref=e1214]:
+                        - generic [ref=e1215]: scanning PRs
+                        - generic [ref=e1218]: 179.6k tokens
+                  - generic [ref=e1220]:
+                    - generic [ref=e1221]:
+                      - img [ref=e1222]
+                      - generic [ref=e1225]: test-agent
+                    - generic [ref=e1226]:
+                      - img [ref=e1227]
+                      - generic [ref=e1229]:
+                        - generic [ref=e1230]: running checks
+                        - generic [ref=e1233]: 8k tokens
+                  - generic [ref=e1235]:
+                    - generic [ref=e1236]:
+                      - img [ref=e1237]
+                      - generic [ref=e1240]: docs-agent
+                    - generic [ref=e1241]:
+                      - img [ref=e1242]
+                      - generic [ref=e1244]:
+                        - generic [ref=e1245]: fixed documentation
+                        - generic [ref=e1248]: 56 tokens
+              - generic [ref=e1267]:
+                - text: Agents frontend analysis loading
+                - generic [ref=e1268]: ...
+            - generic [ref=e1269]:
+              - generic:
+                - img
+            - generic [ref=e1271]:
+              - generic [ref=e1272]: ">"
+              - button [ref=e1274] [cursor=pointer]:
+                - generic [ref=e1275]: Enter
+                - img [ref=e1277]
+      - generic [ref=e1280]:
+        - img [ref=e1281]
+        - img [ref=e1282]
+        - generic [ref=e1284]:
+          - generic [ref=e1293]:
+            - heading "Build without boundaries" [level=1] [ref=e1294]
+            - paragraph [ref=e1295]: Join thousands of developers who've eliminated infrastructure complexity and deployed globally with Cloudflare. Start building for free — no credit card required.
+            - generic [ref=e1296]:
+              - link "Start building for free" [ref=e1298] [cursor=pointer]:
+                - /url: https://dash.cloudflare.com/sign-up
+                - generic [ref=e1300]: Start building for free
+              - link "View docs" [ref=e1302] [cursor=pointer]:
+                - /url: https://developers.cloudflare.com/
+                - generic [ref=e1304]: View docs
+          - generic [ref=e1308]:
+            - generic [ref=e1310]:
+              - generic [ref=e1311]:
+                - img [ref=e1312]
+                - generic [ref=e1314]: No cold starts or region complexity
+              - generic [ref=e1315]:
+                - img [ref=e1316]
+                - generic [ref=e1319]: SASE and Zero Trust without the complexity
+              - generic [ref=e1320]:
+                - img [ref=e1321]
+                - generic [ref=e1323]: Deploy to 330+ cities instantly
+              - generic [ref=e1324]:
+                - img [ref=e1325]
+                - generic [ref=e1328]: Defend against the Internet's biggest DDoS attacks
+              - generic [ref=e1329]:
+                - img [ref=e1330]
+                - generic [ref=e1334]: Predictable pricing without surprises
+              - generic [ref=e1335]:
+                - img [ref=e1336]
+                - generic [ref=e1339]: Identity-aware Zero Trust access that retires your VPN
+              - generic [ref=e1340]:
+                - img [ref=e1341]
+                - generic [ref=e1344]: Battle-tested infrastructure powering millions
+              - generic [ref=e1345]:
+                - img [ref=e1346]
+                - generic [ref=e1351]: CDN, WAF, and DNS faster than the public Internet
+              - generic [ref=e1352]:
+                - img [ref=e1353]
+                - generic [ref=e1355]: No cold starts or region complexity
+              - generic [ref=e1356]:
+                - img [ref=e1357]
+                - generic [ref=e1360]: SASE and Zero Trust without the complexity
+              - generic [ref=e1361]:
+                - img [ref=e1362]
+                - generic [ref=e1364]: Deploy to 330+ cities instantly
+              - generic [ref=e1365]:
+                - img [ref=e1366]
+                - generic [ref=e1369]: Defend against the Internet's biggest DDoS attacks
+              - generic [ref=e1370]:
+                - img [ref=e1371]
+                - generic [ref=e1375]: Predictable pricing without surprises
+              - generic [ref=e1376]:
+                - img [ref=e1377]
+                - generic [ref=e1380]: Identity-aware Zero Trust access that retires your VPN
+              - generic [ref=e1381]:
+                - img [ref=e1382]
+                - generic [ref=e1385]: Battle-tested infrastructure powering millions
+              - generic [ref=e1386]:
+                - img [ref=e1387]
+                - generic [ref=e1392]: CDN, WAF, and DNS faster than the public Internet
+            - generic [ref=e1394]:
+              - generic [ref=e1395]:
+                - img [ref=e1396]
+                - generic [ref=e1398]: No cold starts or region complexity
+              - generic [ref=e1399]:
+                - img [ref=e1400]
+                - generic [ref=e1403]: SASE and Zero Trust without the complexity
+              - generic [ref=e1404]:
+                - img [ref=e1405]
+                - generic [ref=e1407]: Deploy to 330+ cities instantly
+              - generic [ref=e1408]:
+                - img [ref=e1409]
+                - generic [ref=e1412]: Defend against the Internet's biggest DDoS attacks
+              - generic [ref=e1413]:
+                - img [ref=e1414]
+                - generic [ref=e1418]: Predictable pricing without surprises
+              - generic [ref=e1419]:
+                - img [ref=e1420]
+                - generic [ref=e1423]: Identity-aware Zero Trust access that retires your VPN
+              - generic [ref=e1424]:
+                - img [ref=e1425]
+                - generic [ref=e1428]: Battle-tested infrastructure powering millions
+              - generic [ref=e1429]:
+                - img [ref=e1430]
+                - generic [ref=e1435]: CDN, WAF, and DNS faster than the public Internet
+              - generic [ref=e1436]:
+                - img [ref=e1437]
+                - generic [ref=e1439]: No cold starts or region complexity
+              - generic [ref=e1440]:
+                - img [ref=e1441]
+                - generic [ref=e1444]: SASE and Zero Trust without the complexity
+              - generic [ref=e1445]:
+                - img [ref=e1446]
+                - generic [ref=e1448]: Deploy to 330+ cities instantly
+              - generic [ref=e1449]:
+                - img [ref=e1450]
+                - generic [ref=e1453]: Defend against the Internet's biggest DDoS attacks
+              - generic [ref=e1454]:
+                - img [ref=e1455]
+                - generic [ref=e1459]: Predictable pricing without surprises
+              - generic [ref=e1460]:
+                - img [ref=e1461]
+                - generic [ref=e1464]: Identity-aware Zero Trust access that retires your VPN
+              - generic [ref=e1465]:
+                - img [ref=e1466]
+                - generic [ref=e1469]: Battle-tested infrastructure powering millions
+              - generic [ref=e1470]:
+                - img [ref=e1471]
+                - generic [ref=e1476]: CDN, WAF, and DNS faster than the public Internet
+  - contentinfo [ref=e1478]:
+    - generic [ref=e1479]:
+      - generic:
+        - generic:
+          - generic:
+            - img "Cloudflare wordmark"
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic: Getting started
+              - link "Plans" [ref=e1480] [cursor=pointer]:
+                - /url: /plans/
+              - link "Contact sales" [ref=e1481] [cursor=pointer]:
+                - /url: /resource/contact-enterprise-sales/
+              - link "Partners" [ref=e1482] [cursor=pointer]:
+                - /url: /partners/
+              - link "Find a partner" [ref=e1483] [cursor=pointer]:
+                - /url: https://partnerlocator.cloudflare.com/dashboard
+              - link "Startups" [ref=e1484] [cursor=pointer]:
+                - /url: /startups/
+              - link "Under attack?" [ref=e1485] [cursor=pointer]:
+                - /url: /under-attack-hotline/
+              - link "Domain name search" [ref=e1486] [cursor=pointer]:
+                - /url: https://domains.cloudflare.com/
+            - generic:
+              - generic:
+                - generic: Company
+              - link "About" [ref=e1487] [cursor=pointer]:
+                - /url: /about/
+              - link "Careers" [ref=e1488] [cursor=pointer]:
+                - /url: /careers/
+              - link "Investors" [ref=e1489] [cursor=pointer]:
+                - /url: https://cloudflare.net/
+              - link "Press" [ref=e1490] [cursor=pointer]:
+                - /url: /press/
+              - link "Press kit" [ref=e1491] [cursor=pointer]:
+                - /url: /press/press-kit/
+              - link "Global network" [ref=e1492] [cursor=pointer]:
+                - /url: /network/
+          - generic:
+            - generic:
+              - generic:
+                - generic: Public interest
+              - link "Project Galileo" [ref=e1493] [cursor=pointer]:
+                - /url: /galileo/
+              - link "Athenian Project" [ref=e1494] [cursor=pointer]:
+                - /url: /athenian/
+              - link "Cloudflare for Campaigns" [ref=e1495] [cursor=pointer]:
+                - /url: /campaigns/
+              - link "Project Fairshot" [ref=e1496] [cursor=pointer]:
+                - /url: /fair-shot/
+              - link "Impact/ESG" [ref=e1497] [cursor=pointer]:
+                - /url: /impact/
+            - generic:
+              - generic:
+                - generic: Compliance
+              - link "Compliance resources" [ref=e1498] [cursor=pointer]:
+                - /url: /trust-hub/compliance-resources/
+              - link "Trust" [ref=e1499] [cursor=pointer]:
+                - /url: /trust-hub/
+              - link "GDPR" [ref=e1500] [cursor=pointer]:
+                - /url: /trust-hub/gdpr/
+              - link "Responsible AI" [ref=e1501] [cursor=pointer]:
+                - /url: /trust-hub/responsible-ai/
+              - link "Transparency report" [ref=e1502] [cursor=pointer]:
+                - /url: /transparency/
+              - link "Report abuse" [ref=e1503] [cursor=pointer]:
+                - /url: /trust-hub/abuse-approach/
+          - generic:
+            - generic:
+              - generic:
+                - generic: Resources
+              - link "App innovation report" [ref=e1504] [cursor=pointer]:
+                - /url: /resource/app-innovation-report/
+              - link "Cloudflare Radar" [ref=e1505] [cursor=pointer]:
+                - /url: https://radar.cloudflare.com/
+              - link "Case studies" [ref=e1506] [cursor=pointer]:
+                - /url: /case-studies/
+              - link "Status" [ref=e1507] [cursor=pointer]:
+                - /url: https://www.cloudflarestatus.com/
+              - link "Support" [ref=e1508] [cursor=pointer]:
+                - /url: https://support.cloudflare.com/
+              - link "Events" [ref=e1509] [cursor=pointer]:
+                - /url: /events/
+              - link "Blog" [ref=e1510] [cursor=pointer]:
+                - /url: https://blog.cloudflare.com/
+            - generic:
+              - generic:
+                - generic: Developers
+              - link "Documentation" [ref=e1511] [cursor=pointer]:
+                - /url: https://developers.cloudflare.com/
+              - link "Learning center" [ref=e1512] [cursor=pointer]:
+                - /url: /learning/
+              - link "Community" [ref=e1513] [cursor=pointer]:
+                - /url: https://community.cloudflare.com/
+          - generic:
+            - generic:
+              - generic:
+                - generic: Solutions
+              - link "SSE and SASE platform" [ref=e1514] [cursor=pointer]:
+                - /url: /sase/
+              - link "Cloudflare AI Cloud" [ref=e1515] [cursor=pointer]:
+                - /url: /solutions/ai/
+              - link "Frontend Development Platform" [ref=e1516] [cursor=pointer]:
+                - /url: /solutions/frontends/
+              - link "Multi-Tenant Platform Development" [ref=e1517] [cursor=pointer]:
+                - /url: /solutions/platforms/
+              - link "Web Security Platform" [ref=e1518] [cursor=pointer]:
+                - /url: /solutions/security/
+      - generic [ref=e1519]:
+        - img [ref=e1520]
+        - generic [ref=e1521]:
+          - generic [ref=e1522]: © 2026 Cloudflare, Inc.
+          - generic [ref=e1523]:
+            - button "Your privacy choices" [ref=e1525] [cursor=pointer]:
+              - img [ref=e1526]
+              - generic [ref=e1531]: Your privacy choices
+            - generic [ref=e1532]: "|"
+            - generic [ref=e1533]:
+              - link "Report security issues" [ref=e1534] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/disclosure/
+              - text: "|"
+              - link "Privacy policy" [ref=e1535] [cursor=pointer]:
+                - /url: /policies/privacy/
+              - text: "|"
+              - link "Terms of use" [ref=e1536] [cursor=pointer]:
+                - /url: /policies/terms/
+              - text: "|"
+              - link "GDPR" [ref=e1537] [cursor=pointer]:
+                - /url: /trust-hub/gdpr/
+              - text: "|"
+              - link "Trademark" [ref=e1538] [cursor=pointer]:
+                - /url: https://www.cloudflare.com/trademark/
