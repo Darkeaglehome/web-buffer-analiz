@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSM Neighborhood Analysis</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#3b82f6;
+  --primary-glow:rgba(59,130,246,.3);
+  --bg:#0f1117e0;
+  --bg-card:#1a1c2a;
+  --bg-input:#1e2032;
+  --border:#2a2d42;
+  --text:#e8eaf0;
+  --text-dim:#888ca8;
+  --text-muted:#5a5e7a;
+  --radius:10px;
+  --shadow:0 6px 24px rgba(0,0,0,.55);
+}
+html,body{height:100%;font-family:'Inter',sans-serif;background:#0f1117;color:var(--text);overflow:hidden}
+#map{position:fixed;inset:0;z-index:0}
+
+/* ── Floating Panel ── */
+.panel{
+  position:fixed;z-index:1000;
+  background:var(--bg);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+/* ── Input Panel (top-left) ── */
+#inputPanel{
+  top:50%;left:16px;
+  transform:translateY(-50%);
+  width:264px;padding:14px 16px 10px;
+}
+#inputPanel .p-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;
+}
+#inputPanel .logo{
+  font-size:13px;font-weight:800;
+  background:linear-gradient(135deg,#60a5fa,#a78bfa);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.2px;
+}
+.lang-btn{
+  background:var(--bg-input);border:1px solid var(--border);
+  border-radius:5px;color:var(--text-dim);cursor:pointer;
+  font-size:10px;font-weight:600;padding:3px 7px;font-family:'Inter',sans-serif;
+  letter-spacing:.3px;transition:all .2s;
+}
+.lang-btn:hover{background:var(--border);color:var(--text)}
+
+.in-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+.in-group label{
+  display:block;font-size:9px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.5px;color:var(--text-muted);margin-bottom:2px;
+}
+.in-group input,.r-in input{
+  width:100%;padding:6px 8px;
+  background:var(--bg-input);border:1px solid var(--border);
+  border-radius:6px;color:var(--text);
+  font-size:12px;font-family:'Inter',monospace;font-weight:500;
+  outline:none;transition:border-color .2s;
+}
+.in-group input:focus{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-glow)}
+
+#radiusWrap{margin-bottom:7px}
+#radiusWrap input{width:100%;padding:6px 8px;background:var(--bg-input);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:12px;font-family:'Inter',monospace;outline:none}
+#radiusWrap input:focus{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-glow)}
+
+#coordStatus{font-size:10px;color:var(--text-muted);margin-bottom:6px;min-height:16px}
+#coordStatus.ok{color:#4ade80}
+
+.btn-a{
+  width:100%;padding:8px 0;border:none;border-radius:6px;
+  font-size:12px;font-weight:600;cursor:pointer;
+  background:linear-gradient(135deg,var(--primary),#6366f1);
+  color:#fff;font-family:'Inter',sans-serif;
+  box-shadow:0 2px 10px var(--primary-glow);
+  transition:all .2s;
+}
+.btn-a:hover{transform:translateY(-1px);box-shadow:0 4px 16px var(--primary-glow)}
+.btn-a:active{transform:translateY(0)}
+.btn-a:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ── Results Panel (right-middle) ── */
+#resultsPanel{
+  top:50%;right:12px;
+  transform:translateY(-50%);
+  width:236px;max-height:80vh;
+  display:none;flex-direction:column;
+}
+#resultsPanel.open{display:flex}
+
+.r-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 10px 0;
+}
+.r-header h2{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim)}
+.r-badge{font-size:9px;color:var(--text-muted);background:var(--bg-card);padding:2px 6px;border-radius:10px;font-family:monospace}
+
+#rScroll{
+  padding:5px 10px 8px;overflow-y:auto;flex:1;
+}
+#rScroll::-webkit-scrollbar{width:3px}
+#rScroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+
+.r-grid{display:grid;gap:2px}
+.r-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:3px 6px;background:var(--bg-card);border-radius:4px;
+  border-left:2px solid var(--border);
+}
+.r-lbl{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:500}
+.r-lbl .ri{font-size:11px}
+.r-val{font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+
+/* category colors */
+.c-bldg{border-left-color:#f97316}.c-bldg .r-val{color:#f97316}
+.c-wrk{border-left-color:#6366f1}.c-wrk .r-val{color:#818cf8}
+.c-metro{border-left-color:#ef4444}.c-metro .r-val{color:#ef4444}
+.c-edu{border-left-color:#3b82f6}.c-edu .r-val{color:#60a5fa}
+.c-health{border-left-color:#ec4899}.c-health .r-val{color:#f472b6}
+.c-food{border-left-color:#f59e0b}.c-food .r-val{color:#fbbf24}
+.c-worship{border-left-color:#8b5cf6}.c-worship .r-val{color:#a78bfa}
+.c-park{border-left-color:#22c55e}.c-park .r-val{color:#4ade80}
+.c-fin{border-left-color:#14b8a6}.c-fin .r-val{color:#2dd4bf}
+.c-svc{border-left-color:#06b6d4}.c-svc .r-val{color:#22d3ee}
+.c-veh{border-left-color:#78716c}.c-veh .r-val{color:#a8a29e}
+.c-ent{border-left-color:#d946ef}.c-ent .r-val{color:#e879f9}
+.c-furn{border-left-color:#a3e635}.c-furn .r-val{color:#bef264}
+.c-oth{border-left-color:#64748b}.c-oth .r-val{color:#94a3b8}
+
+#rExtra{font-size:9px;color:var(--text-muted);line-height:1.4;margin-top:4px;padding:0 2px}
+#rClear{
+  margin:4px 10px 8px;padding:4px 0;
+  background:var(--bg-input);border:1px solid var(--border);
+  border-radius:4px;color:var(--text-dim);cursor:pointer;
+  font-size:9px;font-family:'Inter',sans-serif;font-weight:500;
+  transition:all .2s;
+}
+#rClear:hover{background:var(--border);color:var(--text)}
+
+/* ── Spinner ── */
+.spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── Coord Info (top-right) ── */
+#mapInfo{
+  position:fixed;top:16px;right:16px;z-index:1000;
+  background:var(--bg);backdrop-filter:blur(12px);
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:6px 12px;font-size:11px;color:var(--text-dim);
+  box-shadow:var(--shadow);display:none;align-items:center;gap:10px;
+}
+#mapInfo.visible{display:flex}
+#mapInfo strong{color:var(--text);font-weight:600}
+
+/* ── Emoji Marker ── */
+.emoji-marker{
+  display:flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:50%;
+  font-size:12px;line-height:1;
+  border:2px solid rgba(255,255,255,.85);
+  box-shadow:0 1px 4px rgba(0,0,0,.4);
+  cursor:pointer;
+  transition:transform .15s;
+}
+.emoji-marker:hover{transform:scale(1.25);z-index:10000!important}
+
+/* ── Legend ── */
+.legend{
+  background:var(--bg);backdrop-filter:blur(12px);
+  border-radius:var(--radius);padding:8px 10px;
+  border:1px solid var(--border);
+  box-shadow:0 2px 12px rgba(0,0,0,.35);
+  font-size:10px;line-height:1.7;max-height:200px;overflow-y:auto;
+}
+.legend::-webkit-scrollbar{width:3px}
+.legend::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.legend-title{font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.4px;color:var(--text-dim);margin-bottom:2px}
+.legend-item{display:flex;align-items:center;gap:5px}
+.legend-dot{width:16px;height:16px;border-radius:50%;flex-shrink:0;font-size:9px;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid rgba(255,255,255,.5)}
+
+@media(max-width:700px){
+  #inputPanel{top:10px;left:10px;width:180px;padding:8px 10px}
+  #inputPanel .logo{font-size:10px}
+  .in-row{grid-template-columns:1fr;gap:3px}
+  .in-group input{font-size:10px;padding:4px 5px}
+  #resultsPanel{right:6px;width:180px;max-height:70vh}
+  #resultsPanel .r-header{padding:6px 8px 0}
+  #resultsPanel .r-header h2{font-size:9px}
+  #rScroll{padding:4px 8px 6px}
+  .r-item{padding:2px 5px}
+  .r-lbl{font-size:9px;gap:3px}
+  .r-lbl .ri{font-size:10px}
+  .r-val{font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- Top-Left: Input Panel -->
+<div class="panel" id="inputPanel">
+  <div class="p-header">
+    <span class="logo">OSM Neighborhood Analysis</span>
+    <button class="lang-btn" id="langBtn">EN</button>
+  </div>
+  <div class="in-row">
+    <div class="in-group">
+      <label id="lblLon">Boylam (X)</label>
+      <input type="text" id="inLon" value="28.9784" />
+    </div>
+    <div class="in-group">
+      <label id="lblLat">Enlem (Y)</label>
+      <input type="text" id="inLat" value="41.0082" />
+    </div>
+  </div>
+  <div id="radiusWrap">
+    <div class="in-group">
+      <label id="lblRad">Yarıçap (m)</label>
+      <input type="number" id="inRad" value="500" min="50" max="5000" step="10" />
+    </div>
+  </div>
+  <div id="coordStatus">💡 Haritaya tıklayarak koordinat belirleyin</div>
+  <button class="btn-a" id="btnGo">🔍 Analiz Et</button>
+</div>
+
+<!-- Right: Results Panel -->
+<div class="panel" id="resultsPanel">
+  <div class="r-header">
+    <h2 id="rTitle">Analiz Sonuçları</h2>
+    <span class="r-badge" id="rBadge">—</span>
+  </div>
+  <div id="rScroll">
+    <div class="r-grid" id="rGrid"></div>
+    <div id="rExtra"></div>
+  </div>
+  <button id="rClear">🗑 Temizle</button>
+</div>
+
+<!-- Bottom-Right: Coord Info -->
+<div id="mapInfo">
+  <span>📍 <strong id="infoCoord">—</strong></span>
+  <span>⭕ <strong id="infoRad">—</strong></span>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const $=(id)=>document.getElementById(id);
+const inLon=$('inLon'),inLat=$('inLat'),inRad=$('inRad');
+const coordStatus=$('coordStatus'),btnGo=$('btnGo');
+const resultsPanel=$('resultsPanel'),rGrid=$('rGrid'),rExtra=$('rExtra'),rBadge=$('rBadge'),rClear=$('rClear');
+const mapInfo=$('mapInfo'),infoCoord=$('infoCoord'),infoRad=$('infoRad');
+const langBtn=$('langBtn');
+
+/* ── Strings ── */
+const S={
+  tr:{
+    title:'Analiz Sonuçları',
+    lon:'Boylam (X)',lat:'Enlem (Y)',rad:'Yarıçap (m)',
+    hint:'💡 Haritaya tıklayarak koordinat belirleyin',
+    hintOk:'✅ Koordinatlar seçildi',
+    hintInvalid:'⚠️ Geçersiz koordinat / yarıçap',
+    btn:'🔍 Analiz Et',
+    btnBusy:'Analiz Ediliyor...',
+    clear:'🗑 Temizle',
+    legend:'Lejant',
+    legendItems:['Bina','İş Yeri','İstasyon','Eğitim','Sağlık','Yeme-İçme','İbadet','Park','Finans','Kamu Hizmeti','Araç','Eğlence','Kent Mobilyası','Diğer'],
+    cats:[
+      'Binalar / Konutlar','İş Yerleri & Mağazalar','Metro / İstasyonlar',
+      'Eğitim','Sağlık','Yeme & İçme','İbadet Yerleri',
+      'Parklar & Yeşil Alan','Finans (Banka/ATM)','Kamu Hizmetleri',
+      'Araç & Park','Eğlence & Sanat','Kent Mobilyası','Diğer',
+    ],
+    other:'📌 <strong>Diğer sınıflandırılmamış:</strong> ',
+    errorMsg:'⚠️ Veri alınırken hata oluştu',
+    initHint:'💡 Haritaya tıklayarak koordinat belirleyin',
+  },
+  en:{
+    title:'Analysis Results',
+    lon:'Lon (X)',lat:'Lat (Y)',rad:'Radius (m)',
+    hint:'💡 Click the map to set coordinates',
+    hintOk:'✅ Coordinates set',
+    hintInvalid:'⚠️ Invalid coordinates / radius',
+    btn:'🔍 Analyze',
+    btnBusy:'Analyzing...',
+    clear:'🗑 Clear',
+    legend:'Legend',
+    legendItems:['Building','Workplace','Station','Education','Health','Food & Drink','Worship','Park','Financial','Services','Vehicle','Entertainment','Furniture','Other'],
+    cats:[
+      'Buildings / Houses','Workplaces & Shops','Metro / Stations',
+      'Education','Healthcare','Food & Drink','Places of Worship',
+      'Parks & Green','Financial (Banks/ATMs)','Public Services',
+      'Vehicle & Parking','Entertainment & Arts','Urban Furniture','Other Amenities',
+    ],
+    other:'📌 <strong>Other unclassified:</strong> ',
+    errorMsg:'⚠️ Error fetching data',
+    initHint:'💡 Click the map to set coordinates',
+  }
+};
+
+let lang='tr';
+
+function t(key){return S[lang][key]||key}
+
+function applyLang(){
+  langBtn.textContent=lang==='tr'?'EN':'TR';
+  $('lblLon').textContent=t('lon');
+  $('lblLat').textContent=t('lat');
+  $('lblRad').textContent=t('rad');
+  coordStatus.textContent=t('initHint');
+  coordStatus.className='';
+  btnGo.innerHTML=t('btn');
+  $('rTitle').textContent=t('title');
+  rClear.textContent=t('clear');
+  // Re-render legend
+  rebuildLegend();
+  // Re-render results if visible
+  if(resultsPanel.classList.contains('open')&&window._lastData){
+    renderResults(window._lastData.data,window._lastData.lat,window._lastData.lon,window._lastData.rad);
+  }
+}
+
+langBtn.addEventListener('click',function(){
+  lang=lang==='tr'?'en':'tr';
+  document.documentElement.lang=lang;
+  applyLang();
+});
+
+function rebuildLegend(){
+  document.querySelectorAll('.leaflet-control .legend').forEach(el=>el.closest('.leaflet-control')?.remove());
+  const items=t('legendItems');
+  const emojis=['🏡','🏢','🚇','🎓','🏥','☕','🕌','🌳','💰','🚓','🚗','🎭','🪑','📌'];
+  const colors=['#f97316','#6366f1','#ef4444','#3b82f6','#ec4899','#f59e0b','#8b5cf6','#22c55e','#14b8a6','#06b6d4','#78716c','#d946ef','#a3e635','#64748b'];
+  const LegendCtrl=L.Control.extend({
+    options:{position:'bottomright'},
+    onAdd:function(){
+      const d=L.DomUtil.create('div','legend');
+      let html=`<div class="legend-title">${t('legend')}</div>`;
+      for(let i=0;i<items.length;i++){
+        html+=`<div class="legend-item"><span class="legend-dot" style="background:${colors[i]};display:inline-flex;align-items:center;justify-content:center;font-size:9px">${emojis[i]}</span> ${items[i]}</div>`;
+      }
+      d.innerHTML=html;
+      return d;
+    }
+  });
+  new LegendCtrl().addTo(map);
+}
+
+/* ── Map ── */
+const map=L.map('map',{center:[41.0082,28.9784],zoom:15,zoomControl:true});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19,
+  attribution:'&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+
+rebuildLegend();
+
+let centerMarker=null,bufferCircle=null,amenityMarkers=[],isAnalyzing=false;
+
+/* ── Map Click ── */
+map.on('click',function(e){
+  const {lat,lng}=e.latlng;
+  inLat.value=lat.toFixed(6);inLon.value=lng.toFixed(6);
+  coordStatus.textContent=t('hintOk');coordStatus.className='ok';
+  updateMarker(lat,lng);updateInfo();
+});
+
+function readC(){
+  return {
+    lon:parseFloat(inLon.value.replace(',','.')),
+    lat:parseFloat(inLat.value.replace(',','.')),
+    rad:parseFloat(inRad.value),
+  };
+}
+function valid(){
+  const c=readC();
+  return !isNaN(c.lon)&&c.lon>=-180&&c.lon<=180&&!isNaN(c.lat)&&c.lat>=-90&&c.lat<=90&&!isNaN(c.rad)&&c.rad>=10;
+}
+
+inLon.addEventListener('input',syncIn);
+inLat.addEventListener('input',syncIn);
+function syncIn(){
+  if(!valid())return;
+  const {lon,lat}=readC();
+  if(isNaN(lon)||isNaN(lat))return;
+  updateMarker(lat,lon);updateInfo();
+  coordStatus.textContent=t('hintOk');coordStatus.className='ok';
+}
+
+function updateMarker(lat,lon){
+  if(centerMarker)map.removeLayer(centerMarker);
+  centerMarker=L.circleMarker([lat,lon],{radius:7,color:'#3b82f6',fillColor:'#3b82f6',fillOpacity:1,weight:2.5}).addTo(map);
+  updateBuffer();
+}
+
+function updateBuffer(){
+  if(bufferCircle){map.removeLayer(bufferCircle);bufferCircle=null}
+  if(!valid())return;
+  const {lon,lat,rad}=readC();
+  if(isNaN(rad)||rad<10)return;
+  bufferCircle=L.circle([lat,lon],{radius:rad,color:'#3b82f6',fillColor:'#3b82f6',fillOpacity:.07,weight:1.8,dashArray:'5,4'}).addTo(map);
+  updateInfo();
+}
+
+inRad.addEventListener('input',function(){updateBuffer();updateInfo()});
+
+function updateInfo(){
+  if(!valid()){mapInfo.classList.remove('visible');return}
+  const {lon,lat,rad}=readC();
+  infoCoord.textContent=`${lat.toFixed(4)}, ${lon.toFixed(4)}`;
+  infoRad.textContent=`${rad}m`;
+  mapInfo.classList.add('visible');
+}
+
+/* ── Clear ── */
+rClear.addEventListener('click',function(){
+  amenityMarkers.forEach(m=>map.removeLayer(m));amenityMarkers=[];
+  resultsPanel.classList.remove('open');
+  window._lastData=null;
+});
+
+/* ── Analyze ── */
+btnGo.addEventListener('click',analyze);
+
+async function analyze(){
+  if(isAnalyzing)return;
+  if(!valid()){coordStatus.textContent=t('hintInvalid');coordStatus.className='';return}
+  const {lon,lat,rad}=readC();
+  isAnalyzing=true;
+  btnGo.disabled=true;
+  btnGo.innerHTML=`<span class="spinner"></span> ${t('btnBusy')}`;
+  amenityMarkers.forEach(m=>map.removeLayer(m));amenityMarkers=[];
+  resultsPanel.classList.remove('open');
+
+  try{
+    const data=await queryOverpass(lat,lon,rad);
+    window._lastData={data,lat,lon,rad};
+    renderResults(data,lat,lon,rad);
+    placeMarkers(data);
+  }catch(err){
+    rGrid.innerHTML=`<div style="padding:12px;text-align:center;color:#f87171;font-size:12px">⚠️ ${t('errorMsg')}: ${err.message}</div>`;
+    rExtra.textContent='';
+    resultsPanel.classList.add('open');
+  }finally{
+    isAnalyzing=false;
+    btnGo.disabled=false;
+    btnGo.innerHTML=t('btn');
+  }
+}
+
+/* ── Overpass ── */
+async function queryOverpass(lat,lon,rad){
+  const q=`[out:json][timeout:30];
+  (node(around:${rad},${lat},${lon})["building"];way(around:${rad},${lat},${lon})["building"];
+   node(around:${rad},${lat},${lon})["shop"];way(around:${rad},${lat},${lon})["shop"];
+   node(around:${rad},${lat},${lon})["office"];way(around:${rad},${lat},${lon})["office"];
+   node(around:${rad},${lat},${lon})["railway"="station"];
+   node(around:${rad},${lat},${lon})["station"="subway"];
+   node(around:${rad},${lat},${lon})["station"="light_rail"];
+   node(around:${rad},${lat},${lon})["amenity"];way(around:${rad},${lat},${lon})["amenity"];
+   node(around:${rad},${lat},${lon})["leisure"];way(around:${rad},${lat},${lon})["leisure"];
+  );out center;`;
+  const r=await fetch('https://overpass-api.de/api/interpreter',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams({data:q}),
+  });
+  if(!r.ok)throw new Error(`Overpass API ${r.status}`);
+  return r.json();
+}
+
+/* ── Render Results ── */
+function renderResults(data,lat,lon,rad){
+  rGrid.innerHTML='';rExtra.innerHTML='';
+  const c={houses:0,workplaces:0,ms:0,edu:0,health:0,food:0,worship:0,parks:0,fin:0,svc:0,veh:0,ent:0,furn:0,oth:0},otherMap={};
+
+  for(const el of(data.elements||[])){
+    const t=el.tags||{};
+    if('building'in t){
+      ['commercial','office','retail','industrial','warehouse'].includes(t.building)?c.workplaces++:c.houses++;}
+    if(t.shop||t.office)c.workplaces++;
+    if(t.railway==='station'||(t.station&&['subway','light_rail'].includes(t.station)))c.ms++;
+    if('amenity'in t){
+      const a=t.amenity;
+      if(['school','university','college','kindergarten','library'].includes(a))c.edu++;
+      else if(['hospital','clinic','doctors','pharmacy','dentist','veterinary'].includes(a))c.health++;
+      else if(['cafe','restaurant','fast_food','bar','pub','ice_cream'].includes(a))c.food++;
+      else if(a==='place_of_worship')c.worship++;
+      else if(['bank','atm','bureau_de_change'].includes(a))c.fin++;
+      else if(['post_office','police','fire_station','townhall','courthouse','embassy','community_centre'].includes(a))c.svc++;
+      else if(['parking','fuel','car_wash','charging_station','taxi','bicycle_rental','car_rental'].includes(a))c.veh++;
+      else if(['cinema','theatre','arts_centre','nightclub','casino','music_venue'].includes(a))c.ent++;
+      else if(['bench','waste_basket','bicycle_parking','toilets','drinking_water','shelter','telephone','recycling','vending_machine','post_box','fountain'].includes(a))c.furn++;
+      else{c.oth++;otherMap[a]=(otherMap[a]||0)+1}
+    }
+    if('leisure'in t&&['park','playground','garden','pitch','sports_centre','golf_course','nature_reserve'].includes(t.leisure))c.parks++;
+  }
+
+  const icons=['🏡','🏢','🚇','🎓','🏥','☕','🕌','🌳','💰','🚓','🚗','🎭','🪑','📌'];
+  const cls=['bldg','wrk','metro','edu','health','food','worship','park','fin','svc','veh','ent','furn','oth'];
+  const cats=t('cats');
+  const vals=[c.houses,c.workplaces,c.ms,c.edu,c.health,c.food,c.worship,c.parks,c.fin,c.svc,c.veh,c.ent,c.furn,c.oth];
+
+  for(let i=0;i<icons.length;i++){
+    const div=document.createElement('div');
+    div.className=`r-item c-${cls[i]}`;
+    div.innerHTML=`<span class="r-lbl"><span class="ri">${icons[i]}</span>${cats[i]}</span><span class="r-val">${vals[i]}</span>`;
+    rGrid.appendChild(div);
+  }
+
+  if(Object.keys(otherMap).length>0){
+    const s=Object.entries(otherMap).sort((a,b)=>b[1]-a[1]);
+    const t2=s.slice(0,6);
+    rExtra.innerHTML=t('other')+t2.map(([k,v])=>`${k.replace(/_/g,' ')} (${v})`).join(', ')+(s.length>6?` <span style="color:var(--text-muted)">+${s.length-6}</span>`:'');
+  }
+
+  rBadge.textContent=`${lat.toFixed(4)},${lon.toFixed(4)} · ${rad}m`;
+  resultsPanel.classList.add('open');
+  if(bufferCircle)map.fitBounds(bufferCircle.getBounds(),{padding:[30,30]});
+}
+
+/* ── Markers (emoji icons) ── */
+function placeMarkers(data){
+  const emojiMap={
+    building:'🏡',workplace:'🏢',metro:'🚇',education:'🎓',
+    health:'🏥',food:'☕',worship:'🕌',park:'🌳',
+    financial:'💰',services:'🚓',vehicle:'🚗',entertainment:'🎭',
+    furniture:'🪑',other:'📌',
+  };
+  const bgMap={
+    building:'#f97316',workplace:'#6366f1',metro:'#ef4444',
+    education:'#3b82f6',health:'#ec4899',food:'#f59e0b',
+    worship:'#8b5cf6',park:'#22c55e',financial:'#14b8a6',
+    services:'#06b6d4',vehicle:'#78716c',entertainment:'#d946ef',
+    furniture:'#a3e635',other:'#64748b',
+  };
+  function cat(t){
+    if(t.railway==='station'||(t.station&&['subway','light_rail'].includes(t.station)))return'metro';
+    if(t.shop||t.office)return'workplace';
+    if(t.building)return['commercial','office','retail','industrial','warehouse'].includes(t.building)?'workplace':'building';
+    const a=t.amenity;
+    if(!a){
+      if(t.leisure&&['park','playground','garden','pitch','sports_centre'].includes(t.leisure))return'park';
+      return'other';
+    }
+    if(['school','university','college','kindergarten','library'].includes(a))return'education';
+    if(['hospital','clinic','doctors','pharmacy','dentist'].includes(a))return'health';
+    if(['cafe','restaurant','fast_food','bar','pub'].includes(a))return'food';
+    if(a==='place_of_worship')return'worship';
+    if(['bank','atm','bureau_de_change'].includes(a))return'financial';
+    if(['post_office','police','fire_station','townhall','courthouse'].includes(a))return'services';
+    if(['parking','fuel','car_wash','charging_station','taxi'].includes(a))return'vehicle';
+    if(['cinema','theatre','arts_centre','nightclub','casino'].includes(a))return'entertainment';
+    if(['bench','waste_basket','bicycle_parking','toilets','drinking_water','shelter','telephone','recycling','vending_machine','post_box','fountain'].includes(a))return'furniture';
+    return'other';
+  }
+  function lbl(t,c){
+    const m={metro:t.name||'Station',building:t.name||'Building',workplace:t.name||'Workplace',education:t.name||'Education',health:t.name||'Healthcare',food:t.name||'Food',worship:t.name||'Worship',park:t.name||'Park',financial:t.name||'Financial',services:t.name||'Service',vehicle:t.name||'Vehicle',entertainment:t.name||'Entertainment',furniture:t.amenity?t.amenity.replace(/_/g,' '):'Furniture',other:t.name||t.amenity||'Other'};
+    return m[c]||'Point';
+  }
+
+  const placed=new Set();
+  for(const el of(data.elements||[])){
+    const t=el.tags||{},c=cat(t);
+    if(c==='other'&&!t.name&&!t.amenity&&!t.leisure)continue;
+    let lat,lon;
+    if(el.type==='node'){lat=el.lat;lon=el.lon}
+    else if(el.center){lat=el.center.lat;lon=el.center.lon}else continue;
+    const k=`${Math.round(lat*1000)},${Math.round(lon*1000)}`;
+    if(placed.has(k))continue;placed.add(k);
+
+    const emoji=emojiMap[c]||'📌';
+    const bg=bgMap[c]||'#64748b';
+
+    const icon=L.divIcon({
+      className:'',
+      html:`<div class="emoji-marker" style="background:${bg}">${emoji}</div>`,
+      iconSize:[22,22],
+      iconAnchor:[11,11],
+      tooltipAnchor:[0,-14],
+    });
+
+    const mk=L.marker([lat,lon],{icon}).addTo(map);
+    mk.bindTooltip(lbl(t,c),{direction:'top',offset:[0,-6]});
+    amenityMarkers.push(mk);
+  }
+}
+
+/* ── Init ── */
+updateMarker(41.0082,28.9784);
+updateInfo();
+map.setView([41.0082,28.9784],15);
+
+})();
+</script>
+</body>
+</html>
